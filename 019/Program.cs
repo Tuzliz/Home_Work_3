@@ -4,53 +4,104 @@
 // 23432 -> да
 // 12821 -> да
 
-//int number = new Random().Next(10000,100000);
-//string strr = number.ToString();
 int GetNumber(string msg)
-{
-while(true)
-{
-    Console.WriteLine(msg);
-    string valueFromConsole = Console.ReadLine();
+ {
+ while(true)
+ {
+     Console.WriteLine(msg);
+     string valueFromConsole = Console.ReadLine();
 
     if(int.TryParse(valueFromConsole, out int number))
-    {
+     {
         if(number > 10000 && number < 100000)
+        
             return number;
-
+            
+         
         else  
-        {
-            Console.WriteLine("Число должно быть пятизначным");
+         {
+             Console.WriteLine("Число должно быть пятизначным");
 
-        }  
+         }  
+
+     }
+    else
+    {
+         Console.WriteLine("Вы ввели не число. Нужно ввести пятизначное число");
+
+    }
+}
+}
+int number = GetNumber("Введите пятизначное число: ");
+bool GetPolindrom(int number)
+{
+ string numberst = Convert.ToString(number);
+ int length = numberst.Length;
+ int count = length / 2;
+ bool isPolindrome = false;
+ for(int i = 0; i <= length /2;)
+ {
+    if(numberst[i] == numberst[length - 1])
+    {
+         i++;
+         length--;
+        isPolindrome = true;
 
     }
     else
     {
-        Console.WriteLine("Вы ввели не число. Нужно ввести пятизначное число");
-
+        isPolindrome = false;
+        break;
     }
 
-}
-}
-
-
-void IsPalindrome(string number)
+ }
+ return isPolindrome;
+bool IsPalindrome = GetPolindrom(number);
+if (isPolindrome == true)
 {
- for (int i =0; i < number.Length / 2; i++)
- {
-       if (number[i] != number[number.Length -1 - i])
-        Console.WriteLine($"{number} - > нет");
-        return;
-   
-  }  
-  Console.WriteLine($"{number} - > да");
-  return;
+     Console.WriteLine($"{number} -> Да!");
+}
+else
+{
+  Console.WriteLine($"{number} -> Нет!");
 }
 
-string messageX= "Число х:";
-int x = GetNumber(messageX);
-if (messageX.Reverse().SequenceEqual(messageX)) Console.WriteLine("Палиндром!");
+}
+
+    
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
